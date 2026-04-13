@@ -2,7 +2,6 @@
   publish = "Website"
 
 # ── Clean URL Redirects ─────────────────────────────────────────────────────
-# These allow URLs without .html to work (better for SEO and sharing)
 
 [[redirects]]
   from = "/guides/law-firm-valuation"
@@ -34,8 +33,15 @@
   to = "/tools/valuation-calculator.html"
   status = 301
 
+# ── Thank-you page ──────────────────────────────────────────────────────────
+# status 200 = serve the file at this URL without a visible redirect
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you.html"
+  status = 200
+
 # ── Catch-all 404 handler ───────────────────────────────────────────────────
-# Sends any unrecognised URL back to the homepage gracefully
 
 [[redirects]]
   from = "/*"
