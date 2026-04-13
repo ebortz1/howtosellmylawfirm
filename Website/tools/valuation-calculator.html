@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law Firm Valuation Calculator | HowToSellMyLawFirm.com</title>
+<meta name="description" content="Free law firm valuation calculator. Estimate your firm's sale value based on revenue, practice area, growth, and deal type. Built for attorneys exploring a sale.">
+<link rel="canonical" href="https://www.howtosellmylawfirm.com/tools/valuation-calculator">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Law Firm Valuation Calculator","applicationCategory":"BusinessApplication","description":"A free interactive tool that estimates law firm sale value based on revenue, practice area, growth trend, client concentration, systems independence, and deal type.","url":"https://www.howtosellmylawfirm.com/tools/valuation-calculator","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"How To Sell My Law Firm","url":"https://www.howtosellmylawfirm.com"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#0a1f44;--navy-deep:#060f22;--navy-mid:#152d60;--gold:#c5a028;--gold-dark:#b8921f;--gold-pale:#f5e9c0;--gold-dim:rgba(197,160,40,0.12);--cream:#faf8f3;--stone:#f0ece0;--text-body:#2a3a55;--text-muted:#6b7a99;--border:rgba(10,31,68,0.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--navy-deep);color:#fff;font-size:15px;line-height:1.7;min-height:100vh;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:72px;border-bottom:1px solid rgba(197,160,40,0.15);background:rgba(6,15,34,0.95);backdrop-filter:blur(16px);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-icon{width:30px;height:30px;}
+.nav-wordmark .top{font-family:var(--serif);font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.25em;text-transform:uppercase;display:block;}
+.nav-wordmark .bot{font-family:var(--serif);font-size:1rem;font-weight:600;color:#fff;display:block;}
+.nav-wordmark .bar{height:1.5px;background:var(--gold);margin-top:3px;}
+.nav-cta{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:0.45rem 1.1rem;font-size:0.7rem;font-family:var(--sans);letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,color 0.25s;}
+.nav-cta:hover{background:var(--gold);color:var(--navy);}
+.tool-hero{padding:4rem 2rem 2rem;text-align:center;max-width:700px;margin:0 auto;}
+.tool-kicker{display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+.tool-kicker::before,.tool-kicker::after{content:'';width:16px;height:1px;background:var(--gold);}
+.tool-hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.25rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:0.5rem;}
+.tool-hero h1 em{font-style:italic;color:var(--gold);}
+.tool-rule{width:40px;height:2px;background:var(--gold);margin:1rem auto;border-radius:1px;}
+.tool-hero p{font-size:0.95rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.7;}
+.calc-wrap{max-width:680px;margin:0 auto;padding:0 1.5rem 5rem;}
+.calc-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);margin-bottom:1px;overflow:hidden;}
+.calc-card-header{padding:1.25rem 1.75rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;}
+.card-num{font-family:var(--serif);font-size:0.85rem;font-weight:300;color:var(--gold);width:20px;flex-shrink:0;}
+.card-title{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.calc-card-body{padding:1.75rem;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+@media(max-width:500px){.field-row{grid-template-columns:1fr;}}
+.field{margin-bottom:1.25rem;}
+.field:last-child{margin-bottom:0;}
+.field label{display:block;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;}
+.select-wrap{position:relative;}
+.select-wrap select{width:100%;background:rgba(255,255,255,0.04);border:none;border-bottom:1px solid rgba(255,255,255,0.12);padding:0.65rem 2rem 0.65rem 0;font-size:0.95rem;color:#fff;font-family:var(--sans);font-weight:300;outline:none;transition:border-color 0.25s;appearance:none;cursor:pointer;}
+.select-wrap select:focus{border-bottom-color:var(--gold);}
+.select-wrap select option{background:var(--navy);color:#fff;}
+.select-wrap::after{content:'';position:absolute;right:2px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid rgba(255,255,255,0.3);pointer-events:none;}
+.field-error select{border-bottom-color:rgba(220,60,60,0.6)!important;}
+.radio-group{display:flex;gap:1px;background:rgba(255,255,255,0.05);}
+.radio-btn{flex:1;text-align:center;padding:0.6rem 0.25rem;font-size:0.72rem;color:rgba(255,255,255,0.35);background:transparent;cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;user-select:none;border:none;font-family:var(--sans);}
+.radio-btn.active{background:var(--gold-dim);color:var(--gold);border-bottom:1px solid var(--gold);}
+.radio-btn:hover:not(.active){color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.04);}
+.factor-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;}
+@media(max-width:500px){.factor-grid{grid-template-columns:1fr;}}
+.calc-submit{width:100%;background:var(--gold);color:var(--navy);border:none;padding:1.1rem;font-size:0.78rem;font-family:var(--sans);font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;margin-top:1px;transition:background 0.25s;}
+.calc-submit:hover{background:var(--gold-dark);}
+.results{display:none;margin-top:1px;}
+.results.visible{display:block;}
+.results-hero{background:var(--navy);padding:3rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.results-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(197,160,40,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(197,160,40,0.03) 1px,transparent 1px);background-size:40px 40px;}
+.results-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;position:relative;}
+.results-range{font-family:var(--serif);font-size:clamp(2.5rem,7vw,4rem);font-weight:300;color:var(--gold);line-height:1;position:relative;margin-bottom:0.5rem;}
+.results-sub{font-size:0.78rem;color:rgba(255,255,255,0.35);font-weight:300;position:relative;}
+.breakdown-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.04);margin-bottom:1px;}
+.bc{background:rgba(255,255,255,0.02);padding:1.25rem;text-align:center;}
+.bc-label{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.35rem;}
+.bc-val{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#fff;}
+.factors-card{background:rgba(255,255,255,0.02);border-top:2px solid var(--gold);padding:1.75rem;}
+.factors-label{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
+.factors-label::before{content:'';width:16px;height:1px;background:var(--gold);}
+.factor-row{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem;}
+.factor-row:last-child{border-bottom:none;}
+.factor-row span:first-child{color:rgba(255,255,255,0.45);font-weight:300;}
+.factor-tag{font-size:0.65rem;font-weight:500;padding:0.2rem 0.65rem;letter-spacing:0.06em;}
+.tag-up{background:rgba(42,90,42,0.4);color:#7bc87b;border:1px solid rgba(42,90,42,0.5);}
+.tag-down{background:rgba(140,40,40,0.3);color:#e08080;border:1px solid rgba(140,40,40,0.4);}
+.tag-neutral{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.08);}
+.disclaimer{background:rgba(197,160,40,0.04);border-left:2px solid rgba(197,160,40,0.3);padding:1.25rem 1.5rem;margin:1px 0;}
+.disclaimer p{font-size:0.75rem;color:rgba(255,255,255,0.3);line-height:1.65;margin:0;font-weight:300;}
+.cta-block{background:var(--navy-mid);padding:2.5rem;text-align:center;}
+.cta-block strong{display:block;font-family:var(--serif);font-size:1.5rem;font-weight:300;color:#fff;margin-bottom:0.5rem;line-height:1.3;}
+.cta-block strong em{font-style:italic;color:var(--gold);}
+.cta-block p{font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:1.75rem;font-weight:300;line-height:1.7;}
+.btn-gold{display:inline-block;background:var(--gold);color:var(--navy);padding:0.9rem 2.25rem;font-size:0.75rem;font-family:var(--sans);font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,transform 0.2s;}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-2px);}
+.cta-fine{font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:0.75rem;letter-spacing:0.06em;}
+footer{background:rgba(0,0,0,0.4);border-top:1px solid rgba(197,160,40,0.1);padding:2rem 2.5rem;text-align:center;}
+.footer-logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:0.75rem;}
+.footer-logo-icon{width:22px;height:22px;}
+.footer-wordmark .top{font-family:var(--serif);font-size:0.5rem;color:rgba(255,255,255,0.25);letter-spacing:0.2em;text-transform:uppercase;display:block;}
+.footer-wordmark .bot{font-family:var(--serif);font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.4);display:block;}
+.footer-wordmark .bar{height:1.5px;background:var(--gold);margin-top:2px;opacity:0.4;}
+.footer-legal{font-size:0.62rem;color:rgba(255,255,255,0.18);line-height:1.6;max-width:500px;margin:0 auto;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.fade-in-1{opacity:0;animation:fadeUp 0.6s 0.1s forwards;}
+.fade-in-2{opacity:0;animation:fadeUp 0.6s 0.25s forwards;}
+.fade-in-3{opacity:0;animation:fadeUp 0.6s 0.4s forwards;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="60 80 80 110" xmlns="http://www.w3.org/2000/svg"><rect x="96" y="86" width="3" height="96" rx="1.5" fill="#c5a028"/><rect x="64" y="89" width="67" height="2.5" rx="1" fill="#c5a028"/><circle cx="97.5" cy="89" r="3.5" fill="#c5a028"/><line x1="69" y1="91.5" x2="69" y2="128" stroke="#c5a028" stroke-width="1.2" stroke-linecap="round"/><line x1="126" y1="91.5" x2="126" y2="128" stroke="#c5a028" stroke-width="1.2" stroke-linecap="round"/><path d="M55 125 Q69 136 83 125" fill="none" stroke="#c5a028" stroke-width="2" stroke-linecap="round"/><path d="M112 125 Q126 136 140 125" fill="none" stroke="#c5a028" stroke-width="2" stroke-linecap="round"/><rect x="94" y="178" width="7" height="4" rx="1" fill="#c5a028"/><rect x="74" y="181" width="47" height="3" rx="1.5" fill="#c5a028"/></svg>
+    <div class="nav-wordmark"><span class="top">How To Sell My</span><span class="bot">Law Firm</span><div class="bar"></div></div>
+  </a>
+  <a href="https://www.howtosellmylawfirm.com/#connect" class="nav-cta">Get Connected</a>
+</nav>
+<div class="tool-hero">
+  <div class="tool-kicker fade-in-1">Free Tool</div>
+  <h1 class="fade-in-2">Law firm<br><em>valuation calculator.</em></h1>
+  <div class="tool-rule fade-in-2"></div>
+  <p class="fade-in-3">Answer 6 questions to get an estimated value range for your practice — based on real market data.</p>
+</div>
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-card-header"><span class="card-num">01</span><span class="card-title">Firm basics</span></div>
+    <div class="calc-card-body">
+      <div class="field-row">
+        <div class="field" id="revenue-field">
+          <label>Annual gross revenue</label>
+          <div class="select-wrap"><select id="revenue"><option value="">Select range</option><option value="250000">Under $500K</option><option value="750000">$500K - $1M</option><option value="2000000">$1M - $3M</option><option value="6500000">$3M - $10M</option><option value="15000000">$10M+</option></select></div>
+        </div>
+        <div class="field" id="practice-field">
+          <label>Primary practice area</label>
+          <div class="select-wrap"><select id="practice"><option value="">Select area</option><option value="1.2">Personal injury / mass tort</option><option value="1.0">Corporate / business law</option><option value="0.95">Immigration</option><option value="0.9">Estate planning / trusts</option><option value="0.85">Healthcare / medical</option><option value="0.75">Family law</option><option value="0.7">Criminal defense</option><option value="0.8">General practice</option></select></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="calc-card">
+    <div class="calc-card-header"><span class="card-num">02</span><span class="card-title">Value factors</span></div>
+    <div class="calc-card-body">
+      <div class="factor-grid">
+        <div class="field"><label>Revenue growth trend</label><div class="radio-group" id="growth"><button class="radio-btn" data-val="0.15" onclick="pick(this,'growth')">Growing</button><button class="radio-btn active" data-val="0" onclick="pick(this,'growth')">Stable</button><button class="radio-btn" data-val="-0.1" onclick="pick(this,'growth')">Declining</button></div></div>
+        <div class="field"><label>Revenue concentration</label><div class="radio-group" id="concentration"><button class="radio-btn active" data-val="0.1" onclick="pick(this,'concentration')">Diversified</button><button class="radio-btn" data-val="0" onclick="pick(this,'concentration')">Moderate</button><button class="radio-btn" data-val="-0.15" onclick="pick(this,'concentration')">Concentrated</button></div></div>
+        <div class="field"><label>Systems &amp; staff independence</label><div class="radio-group" id="systems"><button class="radio-btn" data-val="0.15" onclick="pick(this,'systems')">Strong</button><button class="radio-btn active" data-val="0" onclick="pick(this,'systems')">Moderate</button><button class="radio-btn" data-val="-0.15" onclick="pick(this,'systems')">Low</button></div></div>
+        <div class="field"><label>Preferred deal type</label><div class="radio-group" id="deal"><button class="radio-btn" data-val="pe" onclick="pick(this,'deal')">PE / max</button><button class="radio-btn active" data-val="strategic" onclick="pick(this,'deal')">Strategic</button><button class="radio-btn" data-val="clean" onclick="pick(this,'deal')">Clean exit</button></div></div>
+      </div>
+    </div>
+  </div>
+  <button class="calc-submit" onclick="calculate()">Calculate My Valuation Estimate</button>
+  <div class="results" id="results">
+    <div class="results-hero"><div class="results-label">Estimated valuation range</div><div class="results-range" id="val-range"></div><div class="results-sub" id="val-sub"></div></div>
+    <div class="breakdown-grid" id="breakdown"></div>
+    <div class="factors-card"><div class="factors-label">What's affecting your estimate</div><div id="factors-list"></div></div>
+    <div class="disclaimer"><p>This estimate is based on publicly available market data and general industry benchmarks. It is not a formal appraisal or opinion of value. Actual transaction prices vary based on buyer type, due diligence findings, market conditions, and deal structure.</p></div>
+    <div class="cta-block">
+      <strong>Ready to find out what your firm<br><em>is really worth?</em></strong>
+      <p>Connect confidentially with a vetted sell-side advisor who specializes in law firm transactions — at no cost to you.</p>
+      <a class="btn-gold" href="https://www.howtosellmylawfirm.com/#connect">Get Connected with an Advisor</a>
+      <div class="cta-fine">Confidential &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; Free to start</div>
+    </div>
+  </div>
+</div>
+<footer>
+  <a href="https://www.howtosellmylawfirm.com" class="footer-logo">
+    <svg class="footer-logo-icon" viewBox="60 80 80 110" xmlns="http://www.w3.org/2000/svg"><rect x="96" y="86" width="3" height="96" rx="1.5" fill="#c5a028"/><rect x="64" y="89" width="67" height="2.5" rx="1" fill="#c5a028"/><circle cx="97.5" cy="89" r="3.5" fill="#c5a028"/><line x1="69" y1="91.5" x2="69" y2="128" stroke="#c5a028" stroke-width="1.2" stroke-linecap="round"/><line x1="126" y1="91.5" x2="126" y2="128" stroke="#c5a028" stroke-width="1.2" stroke-linecap="round"/><path d="M55 125 Q69 136 83 125" fill="none" stroke="#c5a028" stroke-width="2" stroke-linecap="round"/><path d="M112 125 Q126 136 140 125" fill="none" stroke="#c5a028" stroke-width="2" stroke-linecap="round"/><rect x="94" y="178" width="7" height="4" rx="1" fill="#c5a028"/><rect x="74" y="181" width="47" height="3" rx="1.5" fill="#c5a028"/></svg>
+    <div class="footer-wordmark"><span class="top">How To Sell My</span><span class="bot">Law Firm</span><div class="bar"></div></div>
+  </a>
+  <p class="footer-legal">HowToSellMyLawFirm.com &nbsp;·&nbsp; This tool is for informational purposes only and does not constitute a formal valuation or financial advice.</p>
+</footer>
+<script>
+const state={growth:0,concentration:0.1,systems:0,deal:'strategic'};
+function pick(el,group){document.querySelectorAll('#'+group+' .radio-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');const v=el.dataset.val;state[group]=isNaN(parseFloat(v))?v:parseFloat(v);}
+function fmt(n){if(n>=1000000)return'$'+(n/1000000).toFixed(1)+'M';return'$'+Math.round(n/1000)+'K';}
+function calculate(){
+  const rev=document.getElementById('revenue'),prac=document.getElementById('practice');
+  let err=false;
+  const rf=document.getElementById('revenue-field'),pf=document.getElementById('practice-field');
+  if(!rev.value){rf.classList.add('field-error');err=true;}else{rf.classList.remove('field-error');}
+  if(!prac.value){pf.classList.add('field-error');err=true;}else{pf.classList.remove('field-error');}
+  if(err)return;
+  const revenue=parseFloat(rev.value),base=parseFloat(prac.value);
+  const practiceText=prac.options[prac.selectedIndex].text.split('/')[0].trim();
+  const adj=state.growth+state.concentration+state.systems;
+  let lo,hi,dealNote,cashPct,earnPct,eqPct;
+  if(state.deal==='pe'){lo=(base+adj)*1.1;hi=(base+adj)*1.45;dealNote='PE deal — earn-out + equity rollover';cashPct='55-65%';earnPct='15-20%';eqPct='15-25%';}
+  else if(state.deal==='strategic'){lo=(base+adj)*0.85;hi=(base+adj)*1.2;dealNote='Strategic sale — balanced cash & earn-out';cashPct='65-75%';earnPct='20-30%';eqPct='None';}
+  else{lo=(base+adj)*0.65;hi=(base+adj)*0.95;dealNote='Clean exit — maximum cash at close';cashPct='80-90%';earnPct='10-20%';eqPct='None';}
+  lo=Math.max(0.3,lo);hi=Math.max(lo+0.2,hi);
+  document.getElementById('val-range').textContent=fmt(Math.round(revenue*lo))+' - '+fmt(Math.round(revenue*hi));
+  document.getElementById('val-sub').textContent=lo.toFixed(2)+'x - '+hi.toFixed(2)+'x revenue  ·  '+dealNote;
+  document.getElementById('breakdown').innerHTML='<div class="bc"><div class="bc-label">Cash at close</div><div class="bc-val">'+cashPct+'</div></div><div class="bc"><div class="bc-label">Earn-out</div><div class="bc-val">'+earnPct+'</div></div><div class="bc"><div class="bc-label">Equity rollover</div><div class="bc-val">'+eqPct+'</div></div>';
+  const factors=[{label:'Practice area ('+practiceText+')',tag:base>=1.0?'up':base>=0.85?'neutral':'down',text:base>=1.0?'Premium':base>=0.85?'Average':'Discount'},{label:'Revenue growth',tag:state.growth>0?'up':state.growth<0?'down':'neutral',text:state.growth>0?'Positive':state.growth<0?'Declining':'Stable'},{label:'Revenue concentration',tag:state.concentration>0?'up':state.concentration<0?'down':'neutral',text:state.concentration>0?'Diversified':state.concentration<0?'Concentrated':'Moderate'},{label:'Systems & independence',tag:state.systems>0?'up':state.systems<0?'down':'neutral',text:state.systems>0?'Strong':state.systems<0?'Low':'Moderate'}];
+  document.getElementById('factors-list').innerHTML=factors.map(f=>'<div class="factor-row"><span>'+f.label+'</span><span class="factor-tag tag-'+f.tag+'">'+f.text+'</span></div>').join('');
+  const r=document.getElementById('results');r.classList.add('visible');
+  setTimeout(()=>r.scrollIntoView({behavior:'smooth',block:'start'}),60);
+}
+</script>
+</body>
+</html>
