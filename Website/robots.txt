@@ -4,9 +4,8 @@
 User-agent: *
 Allow: /
 
-# Block any form thank-you or confirmation pages if added later
-# Disallow: /thank-you/
-# Disallow: /confirmation/
+# Block thank-you page from indexing
+Disallow: /thank-you
 
 # Sitemap location
-Sitemap: https://www.howtosellmylawfirm.com/sitemap.xml
+Sitemap: https://howtosellmylawfirm.com/sitemap.xml
